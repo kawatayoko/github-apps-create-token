@@ -11,10 +11,10 @@ jobs:
         run: .github/scripts/token.sh #GitHub Apps token生成スクリプトの実行
         env:
           APP_ID: ${{ secrets.APP_ID }}
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY}}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository_owner }} / ${{env.TARGET_REPO}}
+          repository: ${{ github.repository_owner }}/${{ env.TARGET_REPO }}
           path: ${{ env.TARGET_REPO }}
-          token: ${{ stepss.create.outputs.token }}
+          token: ${{ steps.create.outputs.token }}
       - run: cat "${TARGET_REPO}/README.md"
